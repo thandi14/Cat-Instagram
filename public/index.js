@@ -4,6 +4,12 @@ async function parseUrl() {
    let url = await fetch("https://api.thecatapi.com/v1/images/search?limit=10")
    let catsUrl = await url.json()
    images(catsUrl)
+
+   window.addEventListener("scroll", () => {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+        setTimeout(parseUrl(), 2000)
+    }
+   })
 }
 
 
@@ -20,16 +26,18 @@ function content(img, count, arr){
 
     container.appendChild(img); // adding each img passed in
 
-    let catsFooterImg = document.createElement("div")
+    let catsFooterImg = document.createElement("div");
+    catsFooterImg.setAttribute("id", "catsFooter");
     catsContainer.appendChild(catsFooterImg); //bottom of img
-    container.appendChild(catsFooterImg)
+    container.appendChild(catsFooterImg);
     let likes = document.createElement("i"); //creating heart
     likes.classList = "fa-solid fa-heart"
-    catsFooterImg.appendChild(likes)
+    catsFooterImg.appendChild(likes);
     let comments = document.createElement("i"); //creating comment
     comments.classList = "fa-solid fa-comment"
-    catsFooterImg.appendChild(comments)
+    catsFooterImg.appendChild(comments);
     let catsFooterCon = document.createElement("div");
+    catsFooterCon.setAttribute("id", "catsFooterCon");
     catsContainer.appendChild(catsFooterCon); // bottom of container
     container.appendChild(catsFooterCon);
     let number = document.createElement("h2");
@@ -38,16 +46,43 @@ function content(img, count, arr){
     number.innerText = `${num} likes`;
     catsFooterCon.appendChild(number);
     let see = document.createElement("h2");
+    see.setAttribute("id", "coms");
     let coms = Math.floor(Math.random() * 100); //comment numbers
     see.innerText = `View all ${coms} comments`
     catsFooterCon.appendChild(see)
 
+    let time = document.createElement("h2"); //setting a time when post was posted
+    time.setAttribute("id", "time");
+    let timer = Math.floor(Math.random() * 100);
+    if (timer < 24 && timer > 1) {
+        time.innerText = `${timer} hours ago`;
+    }
+    else if (timer === 1) {
+        time.innerText = `${timer} hour ago`;
+    }
+    else if (timer > 24) {
+         timer = Math.floor(Math.random() * 10);
+         if (timer < 60 && timer > 1) {
+            time.innerText = `${timer} days ago`;
+         }
+         else if (timer === 1) {
+            time.innerText = `${timer} day ago`;
+
+         }
+         else {
+           time.innerText = `just now`;
+         }
+
+    }
+    else {
+        time.innerText = `just now`
+    }
+
+    catsFooterCon.appendChild(time);
 
     catsContainer.appendChild(container) //adding to body
+
     let clicks = 0
-
-
-
 
         likes.addEventListener("click", () => { //event listener
             if (clicks === 0 || clicks % 2 === 0) {
