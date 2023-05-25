@@ -110,19 +110,19 @@ function content(img, count){
             } else {
                 num = num - 1
                 number.innerText = `${num} likes`
-                likes.classList = "fa-solid fa-heart"
+                likes.classList = "fa-regular fa-heart"
                 clicks++
             }
         })
 
         comments.addEventListener("click", () => {
             commentSection()
-            imgContainer(time, likes, coms, img)
+            imgContainer(time, coms, img)
         })
 
     }
 
-    function imgContainer(time, likes, comms, img) {
+    function imgContainer(time, comms, img) {
         let catsContainerTwo = document.getElementById("catsContainerTwo")
         let containerTwo = document.createElement("div");
         containerTwo.setAttribute("id", "containerTwo");
@@ -130,9 +130,15 @@ function content(img, count){
 
         console.log(catsContainerTwo)
 
-        let imgTwo = document.createElement("img");
+        let imgTwo = document.createElement("img"); //adding each image
         imgTwo.src = img.src;
         containerTwo.appendChild(imgTwo);
+
+        let imgFooterTwo = document.createElement("div"); //footer fot image
+        containerTwo.appendChild(imgFooterTwo);
+        let likesTwo = document.createElement("i");
+        likesTwo.classList = "fa-regular fa-heart";
+        imgFooterTwo.appendChild(likesTwo);
     }
 
 
