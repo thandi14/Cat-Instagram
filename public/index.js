@@ -117,19 +117,22 @@ function content(img, count){
         })
 
         comments.addEventListener("click", () => {
-            imgContainer(time, see, img, numlikes)
+            imgContainer(time, see, img, numlikes, title)
             commentSection()
         })
 
     }
 
-    function imgContainer(time, comms, img, number) {
+    function imgContainer(time, comms, img, number, title) {
         let catsContainerTwo = document.getElementById("catsContainerTwo")
         let containerTwo = document.createElement("div");
         containerTwo.setAttribute("id", "containerTwo");
         catsContainerTwo.appendChild(containerTwo);
 
         console.log(catsContainerTwo)
+        let titleTwo = document.createElement("h1");
+        titleTwo.innerText = title.innerText
+        containerTwo.appendChild(titleTwo)
 
         let imgTwo = document.createElement("img"); //adding each image
         imgTwo.src = img.src;
@@ -172,6 +175,9 @@ function content(img, count){
     catsContainerTwo.classList = "show"
     let arr = ["cutness overload", "I NEED!!", "so cute!"]
     let comContainer = document.getElementById("comContainer"); //grabbing container for comments
+    let scroll = document.createElement("div");
+    scroll.setAttribute("id", "scroll")
+    comContainer.appendChild(scroll)
     let comHeader = document.createElement("div"); //header for comment section
     comHeader.setAttribute("id", "comHeader");
     comContainer.appendChild(comHeader);
