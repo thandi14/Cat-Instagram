@@ -57,7 +57,8 @@ function content(img, count){
 
     let number = document.createElement("h2");
     number.setAttribute("id", "likes")
-    let num = Math.floor(Math.random() * 1000); //like numbers
+    let numlikes = Math.floor(Math.random() * 1000); //like numbers
+    let num = numlikes
     number.innerText = `${num} likes`;
     catsFooterCon.appendChild(number); //adding number of likes to container footer
 
@@ -116,13 +117,13 @@ function content(img, count){
         })
 
         comments.addEventListener("click", () => {
+            imgContainer(time, coms, img, numlikes)
             commentSection()
-            imgContainer(time, coms, img)
         })
 
     }
 
-    function imgContainer(time, comms, img) {
+    function imgContainer(time, comms, img, number) {
         let catsContainerTwo = document.getElementById("catsContainerTwo")
         let containerTwo = document.createElement("div");
         containerTwo.setAttribute("id", "containerTwo");
@@ -137,8 +138,20 @@ function content(img, count){
         let imgFooterTwo = document.createElement("div"); //footer fot image
         containerTwo.appendChild(imgFooterTwo);
         let likesTwo = document.createElement("i");
-        likesTwo.classList = "fa-regular fa-heart";
+        likesTwo.classList = "fa-regular fa-comment"; //adding heart button to footer
         imgFooterTwo.appendChild(likesTwo);
+        let commTwo = document.createElement("i")
+        commTwo.classList = "fa-regular fa-comment"; //adding com button to footer
+        imgFooterTwo.appendChild(commTwo);
+
+        let imgContainerFooterTwo = document.createElement("div");
+        containerTwo.appendChild(imgContainerFooterTwo);
+        let numberTwo = document.createElement("h2");
+        numberTwo.innerText = `${number} likes`
+        numberTwo.setAttribute("id", "numoflikestwo")
+        imgContainerFooterTwo.appendChild(numberTwo);
+
+
     }
 
 
@@ -190,17 +203,25 @@ function content(img, count){
     })
 
 
-
     close.addEventListener("click", () => {
         catsContainerTwo.classList = "hide"
         comContainer.classList = "hide"
         transparent.classList = "hide"
 
+        deletion()
+
     })
 
 }
 
+function deletion() {
+    catsContainerTwo = document.getElementById("catsContainerTwo")
+    containerTwo = document.getElementById("containerTwo")
 
+    if (containerTwo){
+        containerTwo.remove()
+    }
+}
 
 
 window.onload = () => {
