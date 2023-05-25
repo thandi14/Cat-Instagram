@@ -45,10 +45,10 @@ function content(img, count){
     container.appendChild(catsFooterImg);
 
     let likes = document.createElement("i"); //creating heart
-    likes.classList = "fa-solid fa-heart"
+    likes.classList = "fa-regular fa-heart"
     catsFooterImg.appendChild(likes); //adding heart to bottom of img footer
     let comments = document.createElement("i"); //creating comment
-    comments.classList = "fa-solid fa-comment"
+    comments.classList = "fa-regular fa-comment"
     catsFooterImg.appendChild(comments); //adding comment to bottom of img footer
 
     let catsFooterCon = document.createElement("div");
@@ -104,11 +104,13 @@ function content(img, count){
             if (clicks === 0 || clicks % 2 === 0) {
                 num = num + 1
                 number.innerText = `${num} likes`
+                likes.classList = "fa-solid fa-heart"
                 clicks++
 
             } else {
                 num = num - 1
                 number.innerText = `${num} likes`
+                likes.classList = "fa-solid fa-heart"
                 clicks++
             }
         })
