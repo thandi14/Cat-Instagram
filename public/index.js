@@ -115,24 +115,29 @@ function content(img, count){
 
         comments.addEventListener("click", () => {
             commentSection()
-           // imgContainer(time, likes, coms, img)
+            imgContainer(time, likes, coms, img)
         })
 
     }
 
     function imgContainer(time, likes, comms, img) {
         let catsContainerTwo = document.getElementById("catsContainerTwo")
-        let div = document.createElement("div");
-        div.setAttribute("id", "containerTwo");
-        catsContainerTwo.appendChild(div)
+        let containerTwo = document.createElement("div");
+        containerTwo.setAttribute("id", "containerTwo");
+        catsContainerTwo.appendChild(containerTwo);
+
         console.log(catsContainerTwo)
 
-
+        let imgTwo = document.createElement("img");
+        imgTwo.src = img.src;
+        containerTwo.appendChild(imgTwo);
     }
 
 
     function commentSection() {
     let catsContainerTwo = document.getElementById("catsContainerTwo");
+    let transparent = document.getElementById("transparent");
+    transparent.classList = "show"
     catsContainerTwo.classList = "show"
     let arr = ["cutness overload", "I NEED!!", "so cute!"]
     let comContainer = document.getElementById("comContainer"); //grabbing container for comments
@@ -181,6 +186,8 @@ function content(img, count){
     close.addEventListener("click", () => {
         catsContainerTwo.classList = "hide"
         comContainer.classList = "hide"
+        transparent.classList = "hide"
+
     })
 
 }
