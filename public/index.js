@@ -117,7 +117,7 @@ function content(img, count){
         })
 
         comments.addEventListener("click", () => {
-            imgContainer(time, coms, img, numlikes)
+            imgContainer(time, see, img, numlikes)
             commentSection()
         })
 
@@ -136,20 +136,30 @@ function content(img, count){
         containerTwo.appendChild(imgTwo);
 
         let imgFooterTwo = document.createElement("div"); //footer fot image
+        imgFooterTwo.setAttribute("id", "imgFooterTwo");
         containerTwo.appendChild(imgFooterTwo);
         let likesTwo = document.createElement("i");
-        likesTwo.classList = "fa-regular fa-comment"; //adding heart button to footer
+        likesTwo.classList = "fa-regular fa-heart"; //adding heart button to footer
         imgFooterTwo.appendChild(likesTwo);
         let commTwo = document.createElement("i")
         commTwo.classList = "fa-regular fa-comment"; //adding com button to footer
         imgFooterTwo.appendChild(commTwo);
 
         let imgContainerFooterTwo = document.createElement("div");
+        imgContainerFooterTwo.setAttribute("id", "imgContainerFooterTwo")
         containerTwo.appendChild(imgContainerFooterTwo);
         let numberTwo = document.createElement("h2");
         numberTwo.innerText = `${number} likes`
         numberTwo.setAttribute("id", "numoflikestwo")
         imgContainerFooterTwo.appendChild(numberTwo);
+
+        let seeTwo = document.createElement("h3");
+        seeTwo.innerText = comms.innerText;
+        imgContainerFooterTwo.appendChild(seeTwo)
+        let timeTwo = document.createElement("h3");
+        timeTwo.innerText = time.innerText;
+        imgContainerFooterTwo.appendChild(timeTwo);
+
 
 
     }

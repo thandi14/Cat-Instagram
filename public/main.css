@@ -146,6 +146,7 @@ header {
     z-index: 2;
     display: flex;
     justify-content: center;
+    margin-bottom: 150px;
     align-items: center;
     flex-direction: column;
 }
@@ -156,6 +157,26 @@ header {
     z-index: 3;
 
 
+}
+
+#catsContainerTwo > #containerTwo >  #imgFooterTwo {
+ display: flex;
+ width: 300px;
+ gap: 10px;
+ margin-top: 5px;
+
+
+}
+
+#catsContainerTwo > #containerTwo >  #imgContainerFooterTwo {
+    width: 300px;
+}
+
+#catsContainerTwo > #containerTwo > #imgContainerFooterTwo > #numoflikestwo {
+    font-size: medium;
+}
+#catsContainerTwo > #containerTwo > #imgContainerFooterTwo > h3 {
+    font-size: small;
 }
 
 .hide {
