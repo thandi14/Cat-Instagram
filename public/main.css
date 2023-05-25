@@ -50,7 +50,7 @@ header {
     position: fixed;
     bottom: 0%;
     left: 0;
-
+    z-index: 3;
 }
 
 #comContainer > #allComments > h1 {
@@ -111,6 +111,18 @@ header {
 #catsContainer > .cat > #catsFooterCon > #likes{
     font-size: medium;
 }
+
+#catsContainerTwo {
+    background-color: darkgrey;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    opacity: 0.5;
+    position: fixed;
+}
+
 
 .hide {
     display: none;

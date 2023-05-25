@@ -6,17 +6,30 @@ async function parseUrl() {
    images(catsUrl)
 
    window.addEventListener("scroll", () => {
-    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
-        setTimeout(parseUrl(), 2000)
-    }
-   })
+       if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+           setTimeout(parseUrl(), 2000)
+        }
+    })
 }
 
+function images(url) {
 
-function content(img, count, arr){
-    let catsContainer = document.getElementById("catsContainer");
-    let comContainer = document.getElementById("comContainer");
-    let container = document.createElement("div"); //each cats con
+    console.log(url) // passed in the url which is an array
+
+    for (let i = 0; i < url.length; i++) { //loop through the array
+        let cat = url[i] // each array contains obj which is called cat
+        let imgs = document.createElement("img"); // create img
+        imgs.setAttribute("id", `img${i}`) //set image # (id)
+        imgs.src = cat.url //set each src for each img
+        content(imgs, i, url) //pass in each img with src into content to be added in a container
+    }
+
+}
+
+function content(img, count){
+    let catsContainer = document.getElementById("catsContainer"); //grid
+  //  let comContainer = document.getElementById("comContainer");
+    let container = document.createElement("div"); //each cats con whole body inside grid for each img
     container.setAttribute("class", `cat`) // cat con # (class)
 
 
@@ -30,25 +43,28 @@ function content(img, count, arr){
     catsFooterImg.setAttribute("id", "catsFooter");
     catsContainer.appendChild(catsFooterImg); //bottom of img
     container.appendChild(catsFooterImg);
+
     let likes = document.createElement("i"); //creating heart
     likes.classList = "fa-solid fa-heart"
-    catsFooterImg.appendChild(likes);
+    catsFooterImg.appendChild(likes); //adding heart to bottom of img footer
     let comments = document.createElement("i"); //creating comment
     comments.classList = "fa-solid fa-comment"
-    catsFooterImg.appendChild(comments);
+    catsFooterImg.appendChild(comments); //adding comment to bottom of img footer
+
     let catsFooterCon = document.createElement("div");
     catsFooterCon.setAttribute("id", "catsFooterCon");
-    catsContainer.appendChild(catsFooterCon); // bottom of container
-    container.appendChild(catsFooterCon);
+    container.appendChild(catsFooterCon); // bottom of container/ container footer
+
     let number = document.createElement("h2");
     number.setAttribute("id", "likes")
     let num = Math.floor(Math.random() * 1000); //like numbers
     number.innerText = `${num} likes`;
-    catsFooterCon.appendChild(number);
+    catsFooterCon.appendChild(number); //adding number of likes to container footer
+
     let see = document.createElement("h2");
     see.setAttribute("id", "coms");
     let coms = Math.floor(Math.random() * 100); //comment numbers
-    see.innerText = `View all ${coms} comments`
+    see.innerText = `View all ${coms} comments` //adding number of comments to container footer
     catsFooterCon.appendChild(see)
 
     let time = document.createElement("h2"); //setting a time when post was posted
@@ -78,9 +94,9 @@ function content(img, count, arr){
         time.innerText = `just now`
     }
 
-    catsFooterCon.appendChild(time);
+    catsFooterCon.appendChild(time); //adding time to container footer
 
-    catsContainer.appendChild(container) //adding to body
+    catsContainer.appendChild(container) //adding body to grid
 
     let clicks = 0
 
@@ -99,28 +115,25 @@ function content(img, count, arr){
 
         comments.addEventListener("click", () => {
             commentSection()
+           // imgContainer(time, likes, coms, img)
         })
 
     }
 
+    function imgContainer(time, likes, comms, img) {
+        let catsContainerTwo = document.getElementById("catsContainerTwo")
+        let div = document.createElement("div");
+        div.setAttribute("id", "containerTwo");
+        catsContainerTwo.appendChild(div)
+        console.log(catsContainerTwo)
 
-    function images(url) {
-
-        console.log(url) // passed in the url which is an array
-        let arr = []
-
-        for (let i = 0; i < url.length; i++) { //loop through the array
-            let cat = url[i] // each array contains obj which is called cat
-            let imgs = document.createElement("img"); // create img
-            imgs.setAttribute("id", `img${i}`) //set image # (id)
-            imgs.src = cat.url //set each src for each img
-            content(imgs, i, url) //pass in each img with src into content to be added in a container
-        }
 
     }
 
 
     function commentSection() {
+    let catsContainerTwo = document.getElementById("catsContainerTwo");
+    catsContainerTwo.classList = "show"
     let arr = ["cutness overload", "I NEED!!", "so cute!"]
     let comContainer = document.getElementById("comContainer"); //grabbing container for comments
     let comHeader = document.createElement("div"); //header for comment section
@@ -164,7 +177,9 @@ function content(img, count, arr){
     })
 
 
+
     close.addEventListener("click", () => {
+        catsContainerTwo.classList = "hide"
         comContainer.classList = "hide"
     })
 
