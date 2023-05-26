@@ -106,12 +106,14 @@ function content(img, count){
                 num = num + 1
                 number.innerText = `${num} likes`
                 likes.classList = "fa-solid fa-heart"
+                likes.style.color = "red"
                 clicks++
 
             } else {
                 num = num - 1
                 number.innerText = `${num} likes`
                 likes.classList = "fa-regular fa-heart"
+                likes.style.color = "black"
                 clicks++
             }
         })
@@ -169,6 +171,10 @@ function content(img, count){
 
 
     function commentSection() {
+    let catsContainer = document.getElementById("catsContainer");
+    let header = document.getElementById("head");
+    header.classList = "blur"
+    catsContainer.classList = "blur"
     let catsContainerTwo = document.getElementById("catsContainerTwo");
     let transparent = document.getElementById("transparent");
     transparent.classList = "show"
@@ -223,7 +229,8 @@ function content(img, count){
         catsContainerTwo.classList = "hide"
         comContainer.classList = "hide"
         transparent.classList = "hide"
-
+        catsContainer.classList.remove("blur")
+        header.classList.remove("blur")
         deletion()
 
     })
