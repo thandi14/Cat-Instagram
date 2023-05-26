@@ -45,7 +45,8 @@ function content(img, count){
     container.appendChild(catsFooterImg);
 
     let likes = document.createElement("i"); //creating heart
-    likes.classList = "fa-regular fa-heart"
+    likes.classList = "fa-regular fa-heart";
+    likes.setAttribute("id", "hearts");
     catsFooterImg.appendChild(likes); //adding heart to bottom of img footer
     let comments = document.createElement("i"); //creating comment
     comments.classList = "fa-regular fa-comment"
@@ -102,7 +103,7 @@ function content(img, count){
     let clicks = 0
 
         likes.addEventListener("click", () => { //event listener
-            if (clicks === 0 || clicks % 2 === 0) {
+            if (clicks % 2 === 0) {
                 num = num + 1
                 number.innerText = `${num} likes`
                 likes.classList = "fa-solid fa-heart"
@@ -119,19 +120,18 @@ function content(img, count){
         })
 
         comments.addEventListener("click", () => {
-            imgContainer(time, see, img, numlikes, title)
+            imgContainer(time, see, img, numlikes, title, clicks)
             commentSection()
         })
 
     }
 
-    function imgContainer(time, comms, img, number, title) {
+    function imgContainer(time, comms, img, number, title, clicks) {
         let catsContainerTwo = document.getElementById("catsContainerTwo")
         let containerTwo = document.createElement("div");
         containerTwo.setAttribute("id", "containerTwo");
         catsContainerTwo.appendChild(containerTwo);
 
-        console.log(catsContainerTwo)
         let titleTwo = document.createElement("h1");
         titleTwo.innerText = title.innerText
         containerTwo.appendChild(titleTwo)
@@ -145,6 +145,7 @@ function content(img, count){
         containerTwo.appendChild(imgFooterTwo);
         let likesTwo = document.createElement("i");
         likesTwo.classList = "fa-regular fa-heart"; //adding heart button to footer
+        likesTwo.setAttribute("id", "heartsTwo")
         imgFooterTwo.appendChild(likesTwo);
         let commTwo = document.createElement("i")
         commTwo.classList = "fa-regular fa-comment"; //adding com button to footer
@@ -165,7 +166,40 @@ function content(img, count){
         timeTwo.innerText = time.innerText;
         imgContainerFooterTwo.appendChild(timeTwo);
 
+        let likes = document.getElementById("hearts");
+        let num = document.getElementById("likes");
+        console.log(likes);
 
+        if (clicks % 2 !== 0) {
+            number = number + 1
+                numberTwo.innerText = `${number} likes`
+                likesTwo.classList = "fa-solid fa-heart"
+                likesTwo.style.color = "red"
+                clicks++
+        }
+        else {
+            numberTwo.innerText = `${number} likes`;
+            likesTwo.classList = "fa-regular fa-heart"
+            likesTwo.style.color = "black";
+            clicks++
+        }
+
+        likesTwo.addEventListener("click", () => { //event listener
+            if (clicks % 2 !== 0) {
+                number = number + 1
+                numberTwo.innerText = `${number} likes`
+                likesTwo.classList = "fa-solid fa-heart"
+                likesTwo.style.color = "red"
+                clicks++
+
+            } else {
+                number = number - 1;
+                numberTwo.innerText = `${number} likes`
+                likesTwo.classList = "fa-regular fa-heart"
+                likesTwo.style.color = "black"
+                clicks++
+            }
+        })
 
     }
 
@@ -173,6 +207,9 @@ function content(img, count){
     function commentSection() {
     let catsContainer = document.getElementById("catsContainer");
     let header = document.getElementById("head");
+    let numberTwo = document.getElementById("numoflikestwo");
+    let likesTwo = document.getElementById("heartsTwo");
+
     header.classList = "blur"
     catsContainer.classList = "blur"
     let catsContainerTwo = document.getElementById("catsContainerTwo");
@@ -231,6 +268,7 @@ function content(img, count){
         transparent.classList = "hide"
         catsContainer.classList.remove("blur")
         header.classList.remove("blur")
+
         deletion()
 
     })

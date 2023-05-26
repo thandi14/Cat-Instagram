@@ -210,6 +210,12 @@ header {
     width: 300px;
 }
 
+#catsContainerTwo > #containerTwo > #imgFooterTwo > i {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 
 .hide {
     display: none;
